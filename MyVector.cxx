@@ -73,6 +73,11 @@ bool MyVector<T> :: empty() {
     }
 }
 
+template <class T>
+T MyVector<T> :: &operator[](int i) { 
+    return num[i];
+}
+
 
 
 
