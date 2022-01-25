@@ -49,7 +49,7 @@ void MyVector<T> :: pop_back() {
 
 template <class T>
 void MyVector<T> :: pop_back(int n) { 
-    if (length > 0 && n <= length-1) { 
+    if ((length > 0) && (n <= length-1)) { 
         T* p3 = new T[capacity_i-1]; 
         for (int i = 0; i < capacity_i; i++) { 
             if (i == n) { 
@@ -60,7 +60,6 @@ void MyVector<T> :: pop_back(int n) {
             }
 
         }
-    
 
     delete[] num; 
     num = p3; 

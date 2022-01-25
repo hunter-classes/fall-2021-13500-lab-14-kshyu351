@@ -26,6 +26,8 @@ TEST_CASE("testing empty()") {
     v.push_back(10);
 
     CHECK(v.empty() == false); 
+    CHECK(v.size() == 3); 
+
 
     MyVector<int> a = MyVector<int>(); 
     CHECK(a.empty() == true); 
@@ -58,13 +60,6 @@ TEST_CASE("testing pop_back(int n) and v[i]") {
     v.push_back(10.01);
     v.pop_back(0);
     CHECK(v[0] == -3.1); 
-
-    MyVector<double> a = MyVector<double>(); 
-    a.push_back(1.2);
-    a.push_back(-3.1);
-    a.push_back(10.01);
-    a.pop_back(1);
-    CHECK(a[1] == 10.01); 
     
 }
 
@@ -78,20 +73,3 @@ MyVector<double> v = MyVector<double>();
     CHECK(v.size() == 0); 
     CHECK(v.empty() == true); 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
