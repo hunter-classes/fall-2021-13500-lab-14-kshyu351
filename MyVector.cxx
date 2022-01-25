@@ -4,77 +4,88 @@
 
 template <class T>
 MyVector<T> :: MyVector() { 
-    capacity = 10; 
-    size = 0; 
-    T num[10]; 
+    capacity_i = 10; 
+    length = 0; 
+    num = new T[10];
 }
 
 template <class T>
 int MyVector<T> :: size() { 
-    return size;
+    return length;
 }
 
 template <class T>
 int MyVector<T> :: capacity() { 
-    return capacity; 
+    return capacity_i; 
 }
 
 template <class T>
 void MyVector<T> :: push_back(T item) { 
-    T* p = new T[capacity+1];
-    for (int i = 0; i < capacity; i++) { 
-        p[i] = num[i]; 
+    if (length < capacity_i) { 
+        T* p = new T[length+1];
+        for (int i = 0; i < length; i++) { 
+            p[i] = num[i]; 
+        }
+        delete[] num; 
+        p[length] = item; 
+        num = p; 
+        length++; 
     }
-    delete[] num; 
-    p[capacity] = item; 
-    num = p; 
     
 }
 
 template <class T>
 void MyVector<T> :: pop_back() { 
-    T* p2 = new T[capacity-1]; 
-     for (int i = 0; i <= capacity-2; i++) { 
-        p2[i] = num[i]; 
+    if (length > 0) { 
+        T* p2 = new T[capacity_i-1]; 
+        for (int i = 0; i <= capacity_i-2; i++) { 
+            p2[i] = num[i]; 
+        }
+        delete[] num; 
+        num = p2; 
+        length--;
     }
-    delete[] num; 
-    num = p2; 
 }
 
 template <class T>
 void MyVector<T> :: pop_back(int n) { 
-    T* p3 = new T[capacity-1]; 
-     for (int i = 0; i < capacity; i++) { 
-         if (i == n) { 
-             p3[i] = num[i+1]; 
-         }
-         else { 
-            p3[i] = num[i]; 
-         }
+    if (length > 0 && n <= length-1) { 
+        T* p3 = new T[capacity_i-1]; 
+        for (int i = 0; i < capacity_i; i++) { 
+            if (i == n) { 
+                p3[i] = num[i+1]; 
+            }
+            else { 
+                p3[i] = num[i]; 
+            }
 
-     }
+        }
+    
+
     delete[] num; 
     num = p3; 
+    length--; 
+    }
 }
 
 template <class T>
 void MyVector<T> :: clear() { 
+  
+    length = 0; 
     delete[] num; 
-    //is that all ? 
+    
 }
 
 template <class T>
 bool MyVector<T> :: empty() { 
-    if (num.empty()) {
+    if (length == 0) {
         return true; 
     }
-    else { 
-        return false; 
-    }
+    return false; 
 }
 
 template <class T>
-T MyVector<T> :: &operator[](int i) { 
+T& MyVector<T> :: operator[] (int i) { 
     return num[i];
 }
 
