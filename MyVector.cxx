@@ -60,7 +60,6 @@ void MyVector<T> :: pop_back(int n) {
             }
 
         }
-
     delete[] num; 
     num = p3; 
     length--; 
@@ -84,9 +83,11 @@ bool MyVector<T> :: empty() {
 }
 
 template <class T>
-T& MyVector<T> :: operator[] (int i) { 
+T& MyVector<T>::operator[](int i) { 
     return num[i];
 }
+
+
 
 
 

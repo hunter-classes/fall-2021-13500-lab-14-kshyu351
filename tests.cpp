@@ -54,12 +54,12 @@ TEST_CASE("testing pop_back()") {
 }
 
 TEST_CASE("testing pop_back(int n) and v[i]") { 
-    MyVector<double> v = MyVector<double>(); 
-    v.push_back(1.2);
-    v.push_back(-3.1);
-    v.push_back(10.01);
+    MyVector<int> v = MyVector<int>(); 
+    v.push_back(1);
+    v.push_back(-3);
+    v.push_back(10);
     v.pop_back(0);
-    CHECK(v[0] == -3.1); 
+    CHECK(v[0] == -3); 
     
 }
 
